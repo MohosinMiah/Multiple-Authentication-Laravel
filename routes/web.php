@@ -50,5 +50,8 @@ Route::group(['prefix' => 'writter'], function () {
     Route::get('/login','Auth\WritterLoginController@showLoginForm')->name('writter.login');
     Route::post('/login','Auth\WritterLoginController@login')->name('writter.login.submit');
 
+    Route::get('/logout','Auth\LoginController@logout');
+
+
     Route::get('/', 'WritterController@index')->name('writter.dashboard');
 });
