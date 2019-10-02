@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 
 class WritterController extends Controller
 {
+
+    protected $redirectTo = '/writter/login';
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+
+    }
+
     public function index()
     {
         return view('writter-home');
