@@ -13,7 +13,28 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    @if (Auth::guard('admin')->check())
+                    <li>
+                        <a href="{{ route('admin.logout') }}">Admin Logout
+
+                        </a>
+
+
+                    </li>
+                    @endif
                     Hello ADMIN. You are logged in! As ADMIN.
+
+                    @if (Auth::guard('writter')->check())
+                    <li>
+                        <a href="{{ route('writter.logout') }}">
+
+                            Writter Logout
+                        </a>
+
+
+                    </li>
+                    @endif
                 </div>
             </div>
         </div>

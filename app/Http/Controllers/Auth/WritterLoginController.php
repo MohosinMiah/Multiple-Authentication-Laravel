@@ -42,7 +42,7 @@ class WritterLoginController extends Controller
     {
             // $this->middleware('guest');
             // $this->middleware('guest:admin');
-            $this->middleware('guest:writter');
+            $this->middleware('guest:writter')->except('logout');
     }
 
 
@@ -120,6 +120,17 @@ class WritterLoginController extends Controller
     {
         return 'email';
     }
+
+    public function logout()
+    {
+        Auth::guard('writter')->logout();
+        // $request->session()->flush();
+        // $request->session()->regenerate();
+        return redirect('/');
+    }
+
+
+
 
     protected function guard()
     {

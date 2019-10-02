@@ -19,7 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/*
 
+User
+*/
+Route::get('/user/logout','Auth\LoginController@Userlogout')->name('user.logout');
 
 /*   *****************************
         AdminLoginController
@@ -33,8 +37,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
 
+    Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
+
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    Route::get('/logout','Auth\LoginController@logout');
+
 });
 
 
@@ -50,7 +56,7 @@ Route::group(['prefix' => 'writter'], function () {
     Route::get('/login','Auth\WritterLoginController@showLoginForm')->name('writter.login');
     Route::post('/login','Auth\WritterLoginController@login')->name('writter.login.submit');
 
-    Route::get('/logout','Auth\LoginController@logout');
+    Route::get('/logout','Auth\WritterLoginController@logout')->name('writter.logout');
 
 
     Route::get('/', 'WritterController@index')->name('writter.dashboard');

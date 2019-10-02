@@ -41,7 +41,7 @@ class AdminLoginController extends Controller
     public function __construct()
     {
             // $this->middleware('guest');
-            $this->middleware('guest:admin');
+            $this->middleware('guest:admin')->except('logout');
             // $this->middleware('guest:writter');
 
     }
@@ -119,6 +119,16 @@ class AdminLoginController extends Controller
     {
         return 'email';
     }
+
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        // $request->session()->flush();
+        // $request->session()->regenerate();
+        return redirect('/');
+    }
+
 
     protected function guard()
     {
