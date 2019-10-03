@@ -30,6 +30,10 @@ class WritterForgotPasswordController extends Controller
     {
         $this->middleware('guest:writter');
     }
+    public function showLinkRequestForm()
+    {
+        return view('auth.passwords.writter-email');
+    }
 
 
     protected function broker()

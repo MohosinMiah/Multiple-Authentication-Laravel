@@ -39,7 +39,12 @@ class WritterResetPasswordController extends Controller
         $this->middleware('guest:writter');
     }
 
-
+    protected function showResetForm(Request $request, $token = null)
+    {
+        return view('auth.passwords.writter-reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
 
     protected function broker()
     {

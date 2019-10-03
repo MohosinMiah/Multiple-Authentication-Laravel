@@ -65,6 +65,12 @@ Route::group(['prefix' => 'writter'], function () {
 
     Route::get('/logout','Auth\WritterLoginController@logout')->name('writter.logout');
 
+  // Password reset routes
+  Route::post('/password/email', 'Auth\WritterForgotPasswordController@sendResetLinkEmail')->name('writter.password.email');
+  Route::get('/password/reset', 'Auth\WritterForgotPasswordController@showLinkRequestForm')->name('writter.password.request');
+  Route::post('/password/reset', 'Auth\WritterResetPasswordController@reset')->name('writter.password.update');
+  Route::get('/password/reset/{token}', 'Auth\WritterResetPasswordController@showResetForm')->name('writter.password.reset');
+
 
     Route::get('/', 'WritterController@index')->name('writter.dashboard');
 });
